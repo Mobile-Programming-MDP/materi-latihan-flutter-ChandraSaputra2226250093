@@ -24,6 +24,22 @@ class FristScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Chandra Saputra"),
+        actions: <Widget>[
+          //icon di kanan appBar
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.search,
+                color: Colors.white,
+              ))
+        ],
+        leading: IconButton(
+            //icon di kiri appBar
+            onPressed: () {},
+            icon: const Icon(
+              Icons.home,
+              color: Colors.white,
+            )),
       ),
       body: const Center(
         child: Text("Hello Chandra Saputra"),
