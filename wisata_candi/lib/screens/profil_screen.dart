@@ -11,8 +11,8 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   //TODO 1: Deklarasi variabel (state) yang dibituhkan
   bool isSignIn = false;
-  String fullName = " ";
-  String userName = " ";
+  String fullName = "Saputra";
+  String userName = "Chandra";
   int favouriteCandiCount = 0;
   @override
   Widget build(BuildContext context) {
