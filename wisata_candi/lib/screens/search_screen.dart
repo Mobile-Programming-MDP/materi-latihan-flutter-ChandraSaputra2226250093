@@ -52,7 +52,7 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
             ),
           ),
-          
+
           // TODO 5: Buat ListView hasil pencarian sebagai anak dari column
           Expanded(
             child: ListView.builder(
@@ -84,13 +84,11 @@ class _SearchScreenState extends State<SearchScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              candi.name,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              )
-                            ),
+                            Text(candi.name,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                )),
                             const SizedBox(
                               height: 4,
                             ),
