@@ -43,10 +43,10 @@ void _signUp() async {
   //buat navigasi ke SignInScreen
   Navigator.pushReplacementNamed(context, '/signin');
 
-  // print('*** Sign Up berhasil!');
-  // print('Nama: $name');
-  // print('Nama Pengguna: $username');
-  // print('Password: $password');
+  print('*** Sign Up berhasil!');
+  print('Nama: $name');
+  print('Nama Pengguna: $username');
+  print('Password: $password');
 }
 //TODO: 2 Mmembuat metode dispose
 @override
