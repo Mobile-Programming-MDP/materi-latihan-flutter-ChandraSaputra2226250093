@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -18,7 +19,8 @@ String _errorText = '';
 bool _obscurePassword = true;
 
 //TODO: 1 Membuat metode _signUp
-void _signUp(){
+void _signUp() async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
   final String name = _namaController.text.trim();
   final String username = _userController.text.trim();
   final String password = _passwordController.text.trim();
@@ -33,10 +35,18 @@ void _signUp(){
       });
     return;
   }
-  print('*** Sign Up berhasil!');
-  print('Nama: $name');
-  print('Nama Pengguna: $username');
-  print('Password: $password');
+  //simpan data pengguna di SharedPreferences
+  prefs.setString('fullname', name);
+  prefs.setString('username', username);
+  prefs.setString('password', password);
+
+  //buat navigasi ke SignInScreen
+  Navigator.pushReplacementNamed(context, '/signin');
+
+  // print('*** Sign Up berhasil!');
+  // print('Nama: $name');
+  // print('Nama Pengguna: $username');
+  // print('Password: $password');
 }
 //TODO: 2 Mmembuat metode dispose
 @override
