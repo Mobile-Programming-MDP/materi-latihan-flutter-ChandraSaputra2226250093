@@ -33,13 +33,16 @@ class ItemCard extends StatelessWidget {
             // TODO: 3. Buat Image sebagai anak dari Column
             Expanded(
               // TODO: 7. Implementasi Hero animation
-              child: ClipRRect(
-                child: Image.asset(
-                  candi.imageAsset,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
+              child: Hero(
+                tag: candi.imageAsset,
+                child: ClipRRect(
+                  child: Image.asset(
+                    candi.imageAsset,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                  borderRadius: BorderRadius.circular(15),
                 ),
-                borderRadius: BorderRadius.circular(15),
               ),
             ),
             Padding(
