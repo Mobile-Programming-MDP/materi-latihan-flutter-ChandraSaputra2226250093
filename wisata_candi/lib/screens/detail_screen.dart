@@ -16,7 +16,7 @@ class _DetailScreenState extends State<DetailScreen> {
   bool isSignedIn = false; //menyimpan status sign in
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     _checkSignInStatus(); //memeriksa status sign in saat layar dimuat
     _loadFavoriteStatus(); //memeriksa status favorit saat layar dimuat
@@ -48,8 +48,8 @@ class _DetailScreenState extends State<DetailScreen> {
       //Jika belum sign in, arahkan ke SignInScreen
       WidgetsBinding.instance.addPostFrameCallback((_) {
         Navigator.pushReplacementNamed(context, '/signin');
-       });
-       return;
+      });
+      return;
     }
 
     bool favoriteStatus = !isFavorite;
@@ -130,15 +130,16 @@ class _DetailScreenState extends State<DetailScreen> {
                         ),
                       ),
                       IconButton(
-                        onPressed: () {
-                          _loadFavoriteStatus();
-                          _toggleFavorite();
-                        },
-                        icon: Icon(isSignedIn && isFavorite
-                        ? Icons.favorite
-                        : Icons.favorite_border,
-                        color: isSignedIn && isFavorite ? Colors.red : null,)
-                      )
+                          onPressed: () {
+                            _loadFavoriteStatus();
+                            _toggleFavorite();
+                          },
+                          icon: Icon(
+                            isSignedIn && isFavorite
+                                ? Icons.favorite
+                                : Icons.favorite_border,
+                            color: isSignedIn && isFavorite ? Colors.red : null,
+                          ))
                     ],
                   ),
 // info tengah (lokasi, dibangun, tipe)
@@ -258,7 +259,33 @@ class _DetailScreenState extends State<DetailScreen> {
                         return Padding(
                           padding: const EdgeInsets.only(right: 8),
                           child: GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return Dialog(
+                                    child: Hero(
+                                      tag: widget.candi.imageUrls[index],
+                                      child: CachedNetworkImage(
+                                        imageUrl: widget.candi.imageUrls[index],
+                                        // Konfigurasi ukuran gambar yang diperbesar
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        height:
+                                            MediaQuery.of(context).size.height,
+                                        fit: BoxFit.contain,
+                                        placeholder: (context, url) =>
+                                            Container(
+                                          color: Colors.grey,
+                                        ),
+                                        errorWidget: (context, url, error) =>
+                                            const Icon(Icons.error),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
                             child: Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
